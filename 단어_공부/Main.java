@@ -4,32 +4,44 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        int[] arr = new int[26];
         String s = br.readLine().toUpperCase();
 
+        int max = 0;
+        char answer = ' ';
+
+        Set<Character> set = new HashSet<>();
         for (int i = 0; i < s.length(); i++) {
-            int a = s.charAt(i) - 65;
-            arr[a]++;
+            set.add(s.charAt(i));
         }
 
-        int max = 0;
-        char ch = ' ';
+        Iterator<Character> it = set.iterator();
 
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
-                ch = (char) (i + 65);
-            } else if (arr[i] == max) {
-                ch = '?';
+        char[] a = new char[set.size()];
+        for (int i = 0; i < a.length; i++) {
+            a[i] = it.next();
+        }
+
+        for (int i = 0; i < a.length; i++) {
+            int count = 0;
+            for (int j = 0; j < s.length(); j++) {
+                if (a[i] == s.charAt(j)) {
+                    count++;
+                }
+            }
+            if (count > max) {
+                max = count;
+                answer = a[i];
+            } else if (count == max) {
+                answer = '?';
             }
         }
 
-        System.out.println(ch);
+        System.out.println(answer);
     }
 }
