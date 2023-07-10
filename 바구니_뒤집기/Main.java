@@ -13,9 +13,9 @@ public class Main {
         int n = Integer.parseInt(st.nextToken());
         int m = Integer.parseInt(st.nextToken());
 
-        int[] arr = new int[n + 1];
-        for (int i = 0; i < n + 1; i++) {
-            arr[i] = i;
+        int[] baskets = new int[n + 1];
+        for (int i = 0; i < baskets.length; i++) {
+            baskets[i] = i;
         }
 
         StringTokenizer st2;
@@ -25,14 +25,14 @@ public class Main {
             int b = Integer.parseInt(st2.nextToken());
 
             while (a < b) {
-                int temp = arr[a];
-                arr[a++] = arr[b];
-                arr[b--] = temp;
+                int tmp = baskets[a];
+                baskets[a++] = baskets[b];
+                baskets[b--] = tmp;
             }
         }
 
-        for (int i = 1; i < arr.length; i++) {
-            System.out.print(arr[i] + " ");
+        for (int i = 1; i < baskets.length; i++) {
+            System.out.print(baskets[i] + " ");
         }
     }
 }
