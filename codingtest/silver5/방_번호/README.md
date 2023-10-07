@@ -1,3 +1,3 @@
 [문제 링크][link]
 
-[link]: 
+[link]: https://www.acmicpc.net/problem/1475
